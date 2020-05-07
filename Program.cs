@@ -183,8 +183,13 @@ public class Hangman
     |*                                                                        *|
     \**************************************************************************/
     public void ShowBoard()
+          /* In the part of "ShowBoard", I am looking for that when 
+        * the user enters a letter and 
+        * is correct to that of "selectedWord", the "_" 
+        * where the letter goes is removed.Otherwise it will display the "gallows" arrays??*/
     {
-        Console.WriteLine(selectedWord);
+        Console.WriteLine(selectedWord);  //this to know the chosen word
+        
         Console.WriteLine(gallows[guessCount]);
         string board = "";
         Console.WriteLine(board);
