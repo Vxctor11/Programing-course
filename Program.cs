@@ -188,18 +188,17 @@ public class Hangman
         Console.WriteLine(gallows[guessCount]);
         string board = "";
         Console.WriteLine(board);
-        for (int i = 0; i < guessedLetters.Length; i++)
+      for (int i = 0; i < guessedLetters.Length; i++)
         {
-            if ((guessedLetters[i] == false))
+            if (guessedLetters[i] == true)
             {
-                gallows[1] = "_____\n" +
-                         "|     |  \n" +
-                         "|     O \n" +
-                         "|       \n" +
-                         "|       \n" +
-                         "|______ \n";
+                Console.Write(selectedWord[i] + " ");
             }
-
+            else
+            {
+                Console.Write("_" + " ");
+            }
+            Console.WriteLine(guessCount);
         }
     }
     /**************************************************************************\
