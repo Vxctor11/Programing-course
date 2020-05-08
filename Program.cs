@@ -204,7 +204,7 @@ public class Hangman
             }
             else
             {
-                
+                Console.Write(" _ " + " ");
             }
         }
         Console.WriteLine(guessCount++);
