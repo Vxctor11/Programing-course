@@ -195,16 +195,16 @@ public class Hangman
         string board = "";
         Console.WriteLine(board);
 
-        for (int i = 0; i < selectedWord.Length; i--)
+        for (int i = 0; i < selectedWord.Length; i++)
         {
-            if (guessedLetters[i] == true)
+            if (false)
             {
-                Console.Write(selectedWord[i] + " ");
+                
                 
             }
             else
             {
-                Console.Write("_" + " ");
+                
             }
         }
         Console.WriteLine(guessCount++);
