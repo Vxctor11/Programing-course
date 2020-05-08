@@ -195,7 +195,7 @@ public class Hangman
         string board = "";
         Console.WriteLine(board);
 
-        for (int i = 0; i < selectedWord.Length; i++)
+        for (int i = 0; i > selectedWord.Length; i++)
         {
             if (guessedLetters[i] == true)
             {
