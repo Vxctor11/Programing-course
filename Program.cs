@@ -1,4 +1,4 @@
-﻿/*****************************************************************************\
+/*****************************************************************************\
 |*                                                                           *|
 \*****************************************************************************/
 using System;
@@ -17,7 +17,8 @@ public class Hangman
     bool[] guessedLetters;
     int guessCount;
     String[] gallows;
-
+ 
+   
     /**************************************************************************\
     |* Other Game Data Objects and Components                                 *|
     \**************************************************************************/
@@ -41,6 +42,7 @@ public class Hangman
     public void Start()
     {
         string input;
+    
         Init(); // 1. Initialize Variables
         ShowGameStartScreen(); // 2. Show Game Start Screen
         do
@@ -73,7 +75,10 @@ public class Hangman
 
         guessCount = 0;
 
-        gallows = new string[] {
+     
+
+        gallows = new string[] 
+        {
                       "_____   \n" +
                      "|   |   \n" +
                      "|       \n" +
@@ -81,7 +86,7 @@ public class Hangman
                      "|       \n" +
                      "|______ \n",
 
-                     "_____   \n" +
+                      "_____   \n" +
                      "| |     \n" +
                      "| O     \n" +
                      "|       \n" +
@@ -95,7 +100,7 @@ public class Hangman
                      "|       \n" +
                      "|______ \n" ,
 
-                     "_____   \n" +
+                    "_____   \n" +
                     "|  |     \n" +
                     "|  O     \n" +
                     "| /|     \n" +
@@ -121,7 +126,8 @@ public class Hangman
                     "|   O    \n" +
                     "|  /|\\  \n" +
                     "|  / \\  \n" +
-                    "|______  \n" };
+                    "|______  \n" 
+        };
 
         gallows[0] = "_____   \n" +
                      "|   |   \n" +
@@ -183,28 +189,27 @@ public class Hangman
     |*                                                                        *|
     \**************************************************************************/
     public void ShowBoard()
-          /* In the part of "ShowBoard", I am looking for that when 
-        * the user enters a letter and 
-        * is correct to that of "selectedWord", the "_" 
-        * where the letter goes is removed.Otherwise it will display the "gallows" arrays??*/
     {
-        Console.WriteLine(selectedWord);  //this to know the chosen word
-        
+        Console.WriteLine(selectedWord);
         Console.WriteLine(gallows[guessCount]);
         string board = "";
         Console.WriteLine(board);
-      for (int i = 0; i < guessedLetters.Length; i++)
+
+        for (int i = 0; i > selectedWord.Length; i++)
         {
             if (guessedLetters[i] == true)
             {
                 Console.Write(selectedWord[i] + " ");
+                
             }
             else
             {
                 Console.Write("_" + " ");
             }
-            Console.WriteLine(guessCount);
         }
+        Console.WriteLine(guessCount++);
+    
+       
     }
     /**************************************************************************\
     |*                                                                        *|
@@ -218,7 +223,6 @@ public class Hangman
     |*                                                                        *|
     \**************************************************************************/
     public string GetInput()
-        //hola
     {
         string input = Console.ReadLine();
         input = input.Trim();
@@ -229,8 +233,9 @@ public class Hangman
     \**************************************************************************/
     public bool IsValidInput(string input)
     {
-        string letter = input;
+        
         int len = input.Length;
+       
        return true;
     }
     /**************************************************************************\
@@ -238,19 +243,9 @@ public class Hangman
     \**************************************************************************/
     public void ProcessInput(string input)
     {
-        for (int i = 0; i < selectedWord.Length; i++)
-        {
-            if (selectedWord[i] == input[0])
-            {
-                guessedLetters[i] = true;
-            }
-            else
-            {
-                guessCount++;
-            }
-               
-        }
+        
     }
+
     /**************************************************************************\
     |*                                                                        *|
     \**************************************************************************/
