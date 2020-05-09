@@ -188,7 +188,7 @@ public class Hangman
     \**************************************************************************/
     public void ShowBoard()
     {
-        Console.WriteLine(selectedWord);
+       
         Console.WriteLine(gallows[guessCount]);
         string board = "";
         Console.WriteLine(board);
@@ -232,11 +232,9 @@ public class Hangman
     \**************************************************************************/
     public bool IsValidInput(string input)
     {
-        int len = selectedWord.Length;
-        if (len != selectedWord.Length)
-        {
-            Console.WriteLine("You most enter one letter!");
-        }
+        int guessdLetter = selectedWord.Length;
+     
+        Console.WriteLine(selectedWord.ToLower());
        return true;
     }
     /**************************************************************************\
@@ -248,9 +246,17 @@ public class Hangman
         {
             if (selectedWord[i] == input[0])
             {
-                guessedLetters[i] = false;
+                guessedLetters[i] = true;
                 
             }
+            else 
+            {
+                guessedLetters[i] = false;
+                Console.WriteLine(gallows[guessCount]);
+                guessCount++;
+
+            }
+            Console.ReadKey();
         }
     }
 
