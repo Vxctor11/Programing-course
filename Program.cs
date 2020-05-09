@@ -17,7 +17,7 @@ public class Hangman
     bool[] guessedLetters;
     int guessCount;
     String[] gallows;
- 
+    int tries;
    
     /**************************************************************************\
     |* Other Game Data Objects and Components                                 *|
@@ -65,7 +65,7 @@ public class Hangman
     \**************************************************************************/
     public void Init()
     {
-        words = new string[] { "house", "mirror", "floor" };
+        words = new string[] { "house", "space", "floor" };
 
         Random ran = new Random();
         int rIndex = ran.Next(words.Length);
@@ -74,9 +74,7 @@ public class Hangman
         guessedLetters = new bool[selectedWord.Length];
 
         guessCount = 0;
-
-     
-
+        tries = 6;
         gallows = new string[] 
         {
                       "_____   \n" +
@@ -199,17 +197,17 @@ public class Hangman
         {
             if (false)
             {
-                
-                
+
             }
             else
             {
-                Console.Write(" _ " + " ");
+                Console.Write("_" + " ");
             }
         }
-        Console.WriteLine(guessCount++);
-    
        
+        Console.WriteLine("You have " + tries + " tries left!");
+
+
     }
     /**************************************************************************\
     |*                                                                        *|
@@ -218,24 +216,27 @@ public class Hangman
     {
         Console.Write(" Enter any letter: ");
       string guessedLetters = Console.ReadLine();
+        
     }
     /**************************************************************************\
     |*                                                                        *|
     \**************************************************************************/
     public string GetInput()
     {
-        string input = Console.ReadLine();
-        input = input.Trim();
-        return input;
+        string intput = Console.ReadLine();
+        string guessdLetter= intput.Trim();
+        return selectedWord ;
     }
     /**************************************************************************\
     |*                                                                        *|
     \**************************************************************************/
     public bool IsValidInput(string input)
     {
-        
-        int len = input.Length;
-       
+        int len = selectedWord.Length;
+        if (len != selectedWord.Length)
+        {
+            Console.WriteLine("You most enter one letter!");
+        }
        return true;
     }
     /**************************************************************************\
@@ -243,7 +244,14 @@ public class Hangman
     \**************************************************************************/
     public void ProcessInput(string input)
     {
-        
+        for (int i = 0; i < selectedWord.Length; i++)
+        {
+            if (selectedWord[i] == input[0])
+            {
+                guessedLetters[i] = false;
+                
+            }
+        }
     }
 
     /**************************************************************************\
@@ -300,3 +308,4 @@ public class Hangman
 
     }
 }
+
