@@ -201,11 +201,10 @@ public class Hangman
             }
             else
             {
-                Console.Write("_" + " ");
+                Console.Write("_" + " ");  
             }
         }
-       
-        Console.WriteLine("You have " + tries + " tries left!");
+            Console.WriteLine("You have " + tries + " tries left!");
 
 
     }
@@ -232,7 +231,7 @@ public class Hangman
     \**************************************************************************/
     public bool IsValidInput(string input)
     {
-        int guessdLetter = selectedWord.Length;
+        int intput = selectedWord.Length;
      
         Console.WriteLine(selectedWord.ToLower());
        return true;
@@ -314,4 +313,3 @@ public class Hangman
 
     }
 }
-
