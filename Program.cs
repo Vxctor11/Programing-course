@@ -2,6 +2,8 @@
 |*                                                                           *|
 \*****************************************************************************/
 using System;
+using System.Security.Cryptography;
+
 public class Hangman
 {
     /**************************************************************************\
@@ -65,7 +67,7 @@ public class Hangman
     \**************************************************************************/
     public void Init()
     {
-        words = new string[] { "house", "space", "floor" };
+        words = new string[] { "house", "space", "floor", "dinosaurio" };
 
         Random ran = new Random();
         int rIndex = ran.Next(words.Length);
@@ -77,54 +79,54 @@ public class Hangman
         tries = 6;
         gallows = new string[] 
         {
-                      "_____   \n" +
-                     "|   |   \n" +
-                     "|       \n" +
-                     "|       \n" +
-                     "|       \n" +
-                     "|______ \n",
+                          "____   \n"+
+                         "|   |   \n" +
+                         "|       \n" +
+                         "|       \n" +
+                         "|       \n" +
+                         "|______ \n",
 
-                      "_____   \n" +
-                     "| |     \n" +
-                     "| O     \n" +
-                     "|       \n" +
-                     "|       \n" +
-                     "|______ \n" ,
+                          "_____   \n" +
+                         "| |     \n" +
+                         "| O     \n" +
+                         "|       \n" +
+                         "|       \n" +
+                         "|______ \n" ,
 
-                     "_____   \n" +
-                     "| |     \n" +
-                     "| O     \n" +
-                     "| |     \n" +
-                     "|       \n" +
-                     "|______ \n" ,
+                         "_____   \n" +
+                         "| |     \n" +
+                         "| O     \n" +
+                         "| |     \n" +
+                         "|       \n" +
+                         "|______ \n" ,
 
-                    "_____   \n" +
-                    "|  |     \n" +
-                    "|  O     \n" +
-                    "| /|     \n" +
-                    "|        \n" +
-                    "|______  \n" ,
+                        "_____   \n" +
+                        "|  |     \n" +
+                        "|  O     \n" +
+                        "| /|     \n" +
+                        "|        \n" +
+                        "|______  \n" ,
 
-                     "_____    \n" +
-                    "|   |     \n" +
-                    "|   O     \n" +
-                    "|  /|\\   \n" +
-                    "|         \n" +
-                    "|______   \n" ,
+                         "_____    \n" +
+                        "|   |     \n" +
+                        "|   O     \n" +
+                        "|  /|\\   \n" +
+                        "|         \n" +
+                        "|______   \n" ,
 
-                     "_____    \n" +
-                     "|   |    \n" +
-                     "|   O    \n" +
-                     "|  /|\\  \n" +
-                     "|  /     \n" +
-                     "|______  \n" ,
+                         "_____    \n" +
+                         "|   |    \n" +
+                         "|   O    \n" +
+                         "|  /|\\  \n" +
+                         "|  /     \n" +
+                         "|______  \n" ,
 
-                     "_____   \n" +
-                    "|   |    \n" +
-                    "|   O    \n" +
-                    "|  /|\\  \n" +
-                    "|  / \\  \n" +
-                    "|______  \n" 
+                         "_____   \n" +
+                        "|   |    \n" +
+                        "|   O    \n" +
+                        "|  /|\\  \n" +
+                        "|  / \\  \n" +
+                        "|______  \n" 
         };
 
         gallows[0] = "_____   \n" +
@@ -188,7 +190,7 @@ public class Hangman
     \**************************************************************************/
     public void ShowBoard()
     {
-       
+        Console.WriteLine(selectedWord);
         Console.WriteLine(gallows[guessCount]);
         string board = "";
         Console.WriteLine(board);
@@ -231,10 +233,18 @@ public class Hangman
     \**************************************************************************/
     public bool IsValidInput(string input)
     {
-        int intput = selectedWord.Length;
-     
-        Console.WriteLine(selectedWord.ToLower());
-       return true;
+        if(selectedWord.Length <= 0)
+        {
+            Console.WriteLine("You most enter one letter!");
+            
+            return false;
+        }
+        else
+        {
+         return true;
+        }
+              
+
     }
     /**************************************************************************\
     |*                                                                        *|
