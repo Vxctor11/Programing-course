@@ -195,17 +195,18 @@ public class Hangman
         string board = "";
         Console.WriteLine(board);
 
-        for (int i = 0; i < selectedWord.Length; i++)
+        for (int i = 0; i < selectedWord.Length; i++) 
         {
-            if (false)
-            {
-
-            }
+            if(guessedLetters[i] == true)
+             {
+             Console.Write(selectedWord[i] + " ") ;
+             }
             else
             {
                 Console.Write("_" + " ");  
             }
         }
+       
             Console.WriteLine("You have " + tries + " tries left!");
 
 
@@ -216,42 +217,33 @@ public class Hangman
     public void ShowInputOptions()
     {
         Console.Write(" Enter any letter: ");
-      string guessedLetters = Console.ReadLine();
-        
     }
     /**************************************************************************\
     |*                                                                        *|
     \**************************************************************************/
     public string GetInput()
     {
-        string intput = Console.ReadLine();
-        string guessdLetter= intput.Trim();
-        return selectedWord ;
+        string guessedLetters = Console.ReadLine();
+        string guessdLetter= guessedLetters.Trim();
+        return guessedLetters ;
     }
     /**************************************************************************\
     |*                                                                        *|
     \**************************************************************************/
     public bool IsValidInput(string input)
     {
-        if(selectedWord.Length <= 0)
-        {
-            Console.WriteLine("You most enter one letter!");
-            
-            return false;
-        }
-        else
-        {
-         return true;
-        }
+        Console.WriteLine("You most enter one letter!");
               
 
+         return true;
     }
+            
     /**************************************************************************\
     |*                                                                        *|
     \**************************************************************************/
     public void ProcessInput(string input)
     {
-        for (int i = 0; i < selectedWord.Length; i++)
+        for (int i = 0; i < guessedLetters.Length; i++)
         {
             if (selectedWord[i] == input[0])
             {
@@ -260,12 +252,11 @@ public class Hangman
             }
             else 
             {
-                guessedLetters[i] = false;
-                Console.WriteLine(gallows[guessCount]);
+                guessedLetters[i] = false; 
                 guessCount++;
+                
 
             }
-            Console.ReadKey();
         }
     }
 
@@ -288,8 +279,11 @@ public class Hangman
     \**************************************************************************/
     public bool CheckWin()
     {
-        
-        return true;
+        if (selectedWord != "_" )
+        {
+
+        }
+        return false;
     }
     /**************************************************************************\
     |*                                                                        *|
