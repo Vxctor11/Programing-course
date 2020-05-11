@@ -20,7 +20,7 @@ public class Hangman
     int guessCount;
     String[] gallows;
     int tries;
-   
+
     /**************************************************************************\
     |* Other Game Data Objects and Components                                 *|
     \**************************************************************************/
@@ -44,7 +44,7 @@ public class Hangman
     public void Start()
     {
         string input;
-    
+
         Init(); // 1. Initialize Variables
         ShowGameStartScreen(); // 2. Show Game Start Screen
         do
@@ -67,17 +67,17 @@ public class Hangman
     \**************************************************************************/
     public void Init()
     {
-        words = new string[] { "house", "space", "floor", "Diamond" };
+        words = new string[] { "house", "space", "floor", "diamond" };
 
         Random ran = new Random();
         int rIndex = ran.Next(words.Length);
         selectedWord = words[rIndex];
-   
+
         guessedLetters = new bool[selectedWord.Length];
 
         guessCount = 0;
-        tries = 6 ;
-        gallows = new string[] 
+        tries = 6;
+        gallows = new string[]
         {
                           "____   \n"+
                          "|   |   \n" +
@@ -126,7 +126,7 @@ public class Hangman
                         "|   O    \n" +
                         "|  /|\\  \n" +
                         "|  / \\  \n" +
-                        "|______  \n" 
+                        "|______  \n"
         };
 
         gallows[0] = "_____   \n" +
@@ -177,7 +177,7 @@ public class Hangman
                     "|  /|\\  \n" +
                     "|  / \\  \n" +
                     "|______  \n";
-}
+    }
     /**************************************************************************\
     |*                                                                        *|
     \**************************************************************************/
@@ -192,19 +192,19 @@ public class Hangman
     {
         Console.WriteLine(selectedWord);
         Console.WriteLine(gallows[guessCount]);
-        for (int i = 0; i < selectedWord.Length; i++) 
+        for (int i = 0; i < selectedWord.Length; i++)
         {
-            if(guessedLetters[i] == true)
-             {
-             Console.Write(selectedWord[i] + " ") ;
-             }
+            if (guessedLetters[i] == true)
+            {
+                Console.Write(selectedWord[i] + " ");
+            }
             else
             {
-                Console.Write("_" + " ");  
+                Console.Write("_" + " ");
             }
         }
        
-            Console.WriteLine("You have " + tries + " tries left!");
+        Console.WriteLine("You have " + tries + " tries left!");
 
 
     }
@@ -221,7 +221,7 @@ public class Hangman
     public string GetInput()
     {
         string guessedLetters = Console.ReadLine();
-        string guessdLetter= guessedLetters.Trim();
+        string guessdLetter = guessedLetters.Trim();
         return guessedLetters;
     }
     /**************************************************************************\
@@ -229,28 +229,24 @@ public class Hangman
     \**************************************************************************/
     public bool IsValidInput(string input)
     {
-       
-         return true;
+        
+
+        return true;
     }
-            
+
     /**************************************************************************\
     |*                                                                        *|
     \**************************************************************************/
     public void ProcessInput(string input)
     {
-        for (int i = 0; i < selectedWord.Length; i++)
+        for (int i = 0; i < guessedLetters.Length; i++)
         {
             if (selectedWord[i] == input[0])
             {
-                guessedLetters[i] = true; 
+                guessedLetters[i] = true;
             }
-            else
-            {
-
-                guessedLetters[i] = false;
-                guessCount = 6-1;
-                tries = 6 - 1;
-            }
+          
+          
         }
     }
 
@@ -259,7 +255,7 @@ public class Hangman
     \**************************************************************************/
     public void UpdateGameState()
     {
-        
+
     }
     /**************************************************************************\
     |*                                                                        *|
@@ -272,7 +268,9 @@ public class Hangman
     |*                                                                        *|
     \**************************************************************************/
     public bool CheckWin()
-    { 
+    {
+
+
         return false;
     }
     /**************************************************************************\
@@ -280,6 +278,8 @@ public class Hangman
     \**************************************************************************/
     public bool CheckLoss()
     {
+
+
         return false;
     }
     /**************************************************************************\
@@ -287,7 +287,7 @@ public class Hangman
     \**************************************************************************/
 
     public void ShowGameOverScreen()
-    {     
+    {
         Console.WriteLine("Game Over!");
         if (CheckWin())
         {
