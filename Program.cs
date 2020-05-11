@@ -67,7 +67,7 @@ public class Hangman
     \**************************************************************************/
     public void Init()
     {
-        words = new string[] { "house", "space", "floor", "dinosaurio" };
+        words = new string[] { "house", "space", "floor", "Diamond" };
 
         Random ran = new Random();
         int rIndex = ran.Next(words.Length);
@@ -76,7 +76,7 @@ public class Hangman
         guessedLetters = new bool[selectedWord.Length];
 
         guessCount = 0;
-        tries = 6;
+        tries = 6 ;
         gallows = new string[] 
         {
                           "____   \n"+
@@ -192,9 +192,6 @@ public class Hangman
     {
         Console.WriteLine(selectedWord);
         Console.WriteLine(gallows[guessCount]);
-        string board = "";
-        Console.WriteLine(board);
-
         for (int i = 0; i < selectedWord.Length; i++) 
         {
             if(guessedLetters[i] == true)
@@ -225,16 +222,14 @@ public class Hangman
     {
         string guessedLetters = Console.ReadLine();
         string guessdLetter= guessedLetters.Trim();
-        return guessedLetters ;
+        return guessedLetters;
     }
     /**************************************************************************\
     |*                                                                        *|
     \**************************************************************************/
     public bool IsValidInput(string input)
     {
-        Console.WriteLine("You most enter one letter!");
-              
-
+       
          return true;
     }
             
@@ -243,19 +238,18 @@ public class Hangman
     \**************************************************************************/
     public void ProcessInput(string input)
     {
-        for (int i = 0; i < guessedLetters.Length; i++)
+        for (int i = 0; i < selectedWord.Length; i++)
         {
             if (selectedWord[i] == input[0])
             {
-                guessedLetters[i] = true;
-                
+                guessedLetters[i] = true; 
             }
-            else 
+            else
             {
-                guessedLetters[i] = false; 
-                guessCount++;
-                
 
+                guessedLetters[i] = false;
+                guessCount = 6-1;
+                tries = 6 - 1;
             }
         }
     }
@@ -278,11 +272,7 @@ public class Hangman
     |*                                                                        *|
     \**************************************************************************/
     public bool CheckWin()
-    {
-        if (selectedWord != "_" )
-        {
-
-        }
+    { 
         return false;
     }
     /**************************************************************************\
@@ -290,7 +280,6 @@ public class Hangman
     \**************************************************************************/
     public bool CheckLoss()
     {
-        
         return false;
     }
     /**************************************************************************\
@@ -298,13 +287,11 @@ public class Hangman
     \**************************************************************************/
 
     public void ShowGameOverScreen()
-    {
-        Console.WriteLine(gallows[guessCount]);
-
+    {     
         Console.WriteLine("Game Over!");
         if (CheckWin())
         {
-            Console.WriteLine(" You Won and this are your numbers of erro " + guessCount);
+            Console.WriteLine(" You Won and this are your numbers of error " + guessCount);
         }
         else if (CheckLoss())
         {
@@ -314,6 +301,5 @@ public class Hangman
         {
             Console.WriteLine("Something went really wrong! This is never supposed to happen!");
         }
-
     }
 }
