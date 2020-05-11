@@ -1,4 +1,4 @@
-//*****************************************************************************\
+/*****************************************************************************\
 |*                                                                           *|
 \*****************************************************************************/
 using Microsoft.SqlServer.Server;
@@ -21,7 +21,6 @@ public class Hangman
     int guessCount;
     String[] gallows;
     int tries;
-
     /**************************************************************************\
     |* Other Game Data Objects and Components                                 *|
     \**************************************************************************/
@@ -204,7 +203,7 @@ public class Hangman
                 Console.Write("_" + " ");
             }
         }
-       
+
         Console.WriteLine("You have " + tries + " tries left!");
 
 
@@ -230,11 +229,12 @@ public class Hangman
     \**************************************************************************/
     public bool IsValidInput(string input)
     {
-        string word = input; 
+        string word = input;
         int len = input.Length;
-        Char.IsLetter(Convert.ToChar(input));
-        Char.IsLower(Convert.ToChar(input));
-        input = Console.ReadLine().Trim().ToLower();
+        if (Char.IsLetter(Convert.ToChar(input)) || Char.IsLower(Convert.ToChar(input)))
+        {
+            Console.WriteLine("You have to enter lowercase letters");
+        }
         return true;
     }
 
@@ -249,7 +249,10 @@ public class Hangman
             {
                 guessedLetters[i] = true;
             }
-            guessCount = +1;
+            else if (selectedWord[i] != input[0])
+            {
+
+            }
         }
     }
 
@@ -272,16 +275,21 @@ public class Hangman
     \**************************************************************************/
     public bool CheckWin()
     {
+        if (guessedLetters.Length == selectedWord.Length)
+        {
+        }
 
-
-        return false;
+        return true;
     }
     /**************************************************************************\
     |*                                                                        *|
     \**************************************************************************/
     public bool CheckLoss()
     {
+        if (guessCount >= 6)
+        {
 
+        }
 
         return false;
     }
