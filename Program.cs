@@ -230,10 +230,11 @@ public class Hangman
     \**************************************************************************/
     public bool IsValidInput(string input)
     {
-        string word = input;
+        string word = input; 
         int len = input.Length;
-        Char.IsLetter();
-        Char.IsLower();
+        Char.IsLetter(Convert.ToChar(input));
+        Char.IsLower(Convert.ToChar(input));
+        input = Console.ReadLine().Trim().ToLower();
         return true;
     }
 
