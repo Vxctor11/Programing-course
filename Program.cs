@@ -203,7 +203,7 @@ public class Hangman
                 Console.Write("_" + " ");
             }
         }
-
+       
         Console.WriteLine("You have " + tries + " tries left!");
 
 
@@ -229,11 +229,11 @@ public class Hangman
     \**************************************************************************/
     public bool IsValidInput(string input)
     {
-        string word = input;
+        string word = input; 
         int len = input.Length;
-        if (Char.IsLetter(Convert.ToChar(input)) || Char.IsLower(Convert.ToChar(input)))
+        if(Char.IsLetter(Convert.ToChar(input)) || Char.IsLower(Convert.ToChar(input)))
         {
-            Console.WriteLine("You have to enter lowercase letters");
+            Console.WriteLine("You have to enter only letters");
         }
         return true;
     }
@@ -251,7 +251,7 @@ public class Hangman
             }
             else if (selectedWord[i] != input[0])
             {
-
+               
             }
         }
     }
@@ -275,6 +275,7 @@ public class Hangman
     \**************************************************************************/
     public bool CheckWin()
     {
+
         if (guessedLetters.Length == selectedWord.Length)
         {
         }
