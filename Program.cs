@@ -220,9 +220,9 @@ public class Hangman
     \**************************************************************************/
     public string GetInput()
     {
-        string guessedLetters = Console.ReadLine();
-        string guessdLetter = guessedLetters.Trim();
-        return guessedLetters;
+        string input = Console.ReadLine();
+        string guessdLetter = input.Trim();
+        return input;
     }
     /**************************************************************************\
     |*                                                                        *|
@@ -249,10 +249,7 @@ public class Hangman
             {
                 guessedLetters[i] = true;
             }
-            else if (selectedWord[i] != input[0])
-            {
-               
-            }
+            guessCount = +1;
         }
     }
 
@@ -275,11 +272,6 @@ public class Hangman
     \**************************************************************************/
     public bool CheckWin()
     {
-
-        if (guessedLetters.Length == selectedWord.Length)
-        {
-        }
-
         return true;
     }
     /**************************************************************************\
@@ -287,11 +279,6 @@ public class Hangman
     \**************************************************************************/
     public bool CheckLoss()
     {
-        if (guessCount >= 6)
-        {
-
-        }
-
         return false;
     }
     /**************************************************************************\
