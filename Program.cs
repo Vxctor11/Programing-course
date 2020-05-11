@@ -1,6 +1,7 @@
-/*****************************************************************************\
+//*****************************************************************************\
 |*                                                                           *|
 \*****************************************************************************/
+using Microsoft.SqlServer.Server;
 using System;
 using System.Security.Cryptography;
 
@@ -229,8 +230,10 @@ public class Hangman
     \**************************************************************************/
     public bool IsValidInput(string input)
     {
-        
-
+        string word = input;
+        int len = input.Length;
+        Char.IsLetter();
+        Char.IsLower();
         return true;
     }
 
@@ -245,8 +248,7 @@ public class Hangman
             {
                 guessedLetters[i] = true;
             }
-          
-          
+            guessCount = +1;
         }
     }
 
